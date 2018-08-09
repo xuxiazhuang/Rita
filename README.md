@@ -1,0 +1,2 @@
+# Rita
+Just another repository
