@@ -1,0 +1,113 @@
+Multi-table queries with JOINs
+
+#we can combine row data across two separate tables using this unique key with join
+
+#The INNER JOIN is a process that matches rows from the first table and the second table which have the same
+key(as defined by the ON constraint) to create a result row with the combined columns from both tables.
+Select query with INNER JOIN on multiple tables
+
+SELECT column, another_table_column, …
+FROM mytable
+INNER JOIN another_table
+    ON mytable.id = another_table.id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset
+
+
+exercises:
+
+#Find the domestic and international sales for each movie
+
+SELECT Title,Domestic_sales,International_sales FROM movies
+INNER JOIN Boxoffice ON Movies.id = Boxoffice.Movie_id
+
+
+#Show the sales numbers for each movie that did better internationally rather than domestically
+SELECT Title,Domestic_sales,International_sales FROM movies
+INNER JOIN Boxoffice ON Movies.id = Boxoffice.Movie_id
+where International_sales > Domestic_sales
+
+
+#List all the movies by their ratings in descending order
+SELECT Title,Rating FROM movies
+INNER JOIN Boxoffice ON Movies.id = Boxoffice.Movie_id
+order by Rating desc
+
+
+####outerjoin
+#a LEFT JOIN simply includes rows from A regardless of whether a matching row is found in B.
+The RIGHT JOIN is the same, but reversed, keeping rows in B regardless of whether a match is found in A
+a FULL JOIN simply means that rows from both tables are kept, regardless of whether a matching row exists
+in the other table.
+
+
+#Select query with LEFT/RIGHT/FULL JOINs on multiple tables
+SELECT column, another_column, …
+
+
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table
+    ON mytable.id = another_table.matching_id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+
+
+Excises:
+
+#Find the list of all buildings that have employees
+
+SELECT DISTINCT building FROM employees
+
+#Find the list of all buildings and their capacity
+
+SELECT * FROM buildings;
+
+#List all buildings and the distinct employee roles in each building (including empty buildings)
+
+SELECT DISTINCT Role,Building_name from Buildings FULL join  Employees
+on Building_name = Building
+
+
+--------------------------------------------------------------------------------------
+
+# A short note on NULLs
+
+#you can test a column for NULL values in a WHERE clause by using either the IS NULL or IS NOT NULL constraint.
+
+# Select query with constraints on NULL values
+
+SELECT column, another_column, …
+FROM mytable
+where coumn is/is not null
+and/or another_condition
+and/or
+
+
+Excises:
+
+#Find the name and role of all employees who have not been assigned to a building
+
+SELECT Role,Name,Building FROM employees
+where Building is null
+
+
+#Find the names of the buildings that hold no employees
+
+SELECT DISTINCT building_name
+FROM buildings
+  LEFT JOIN employees
+    ON building_name = building
+WHERE role IS NULL;
+
+
+
+
+
+
+
+
+
+
+
