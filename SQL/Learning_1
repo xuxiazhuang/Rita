@@ -1,0 +1,126 @@
+SQL learning
+
+#Select query for a specific columns
+
+SELECT column, another_column....
+FROM mytable;
+
+#Select query for all columns
+
+SELECT *
+FROM mytable;
+--------------------------------------------------------------------------------
+#Select query with constraints
+
+SELECT column, another_column,...
+FROM mytable
+WHERE condition
+    AND/OR another_condition
+    AND/OR ....;
+
+ Operator	               Condition	                                 SQL Example
+=, !=, < <=, >, >=	Standard numerical operators	                     col_name != 4
+BETWEEN … AND …	    Number is within range of two values (inclusive)	 col_name BETWEEN 1.5 AND 10.5
+NOT BETWEEN … AND …	Number is not within range of two values (inclusive) col_name NOT BETWEEN 1 AND 10
+IN (…)	            Number exists in a list	                             col_name IN (2, 4, 6)
+NOT IN (…)	        Number does not exist in a list	                     col_name NOT IN (1, 3, 5)
+LIKE	            Case insensitive exact string comparison	          col_name LIKE "ABC"
+NOT LIKE	        Case insensitive exact string inequality comparison	  col_name NOT LIKE "ABCD"
+%	                Used anywhere in a string to match a sequence of      col_name LIKE "%AT%"(matches "AT", "ATTIC",
+                   zero or more,characters (only with LIKE or NOT LIKE)   "CAT" or even "BATS")
+
+
+
+#Find the movies released in the years between 2000 and 2010
+SELECT Year,Title FROM movies
+where year between 2000 and 2010
+
+#Find the movies not released in the years between 2000 and 2010
+
+SELECT Title, Year FROM movies
+WHERE year not between 2000 and 2010;
+
+#Find all the Toy Story movies
+SELECT Title FROM movies
+where Title like "Toy Story%"
+
+#Find all the movies directed by John Lasseter
+select Title,Director from Movies
+where Director = "John Lasseter"
+
+----------------------------------------------------------------------------------
+#Filtering and sorting Query results
+
+#Select query with unique results
+
+select distinct column,another_column,........from mytable
+where condition(s)
+
+#SQL provides a way to sort your results by a given column
+#Select query with ordered results
+
+select column,another_column,....from mytable
+where condition(s)
+order by column asc/desc
+
+#The LIMIT will reduce the number of rows to return, and the optional OFFSET will specify where to begin counting the number rows from.
+
+select column,another_column,....from mytable
+where condition(s)
+order by column asc/desc
+limit num_list offset num_offset
+
+excises:
+#List all directors of Pixar movies (alphabetically), without duplicates
+SELECT DISTINCT Director From Movies
+ORDER BY director ASC
+
+#List the last four Pixar movies released (ordered from most recent to least)
+
+SELECT Title,Year From Movies
+ORDER BY Year DESC
+LIMIT 4
+
+#List the first five Pixar movies sorted alphabetically
+
+SELECT Title FROM movies
+ORDER BY Title ASC
+LIMIT 5
+
+
+#List the next five Pixar movies sorted alphabetically
+SELECT Title FROM movies
+ORDER BY Title ASC
+LIMIT 5 OFFSET 5
+
+--------------------------------------------------------------------
+
+Task
+#List all the Canadian cities and their populations
+SELECT Country,City,Population from North_american_cities
+where country = "Canada"
+
+#Order all the cities in the United States by their latitude from north to south
+SELECT Country,City,Latitude FROM north_american_cities
+WHERE Country = "United States"
+ORDER BY Latitude DESC
+
+
+#List all the cities west of Chicago, ordered from west to east
+SELECT City,Longitude FROM north_american_cities
+where longitude<	-87.629798
+order by Longitude ASC
+
+
+#List the two largest cities in Mexico (by population)
+SELECT City,Country,Population FROM north_american_cities
+where Country LIKE "Mexico"
+order by Population desc
+limit 2
+
+
+#List the third and fourth largest cities (by population) in the United States and their population
+SELECT City,Country,Population FROM north_american_cities
+where Country = "United States"
+order by Population desc
+limit 2 offset 2
