@@ -1,0 +1,157 @@
+Queries with expressions
+
+#Example query with expressions
+
+select particle_speed /2.0 as half_particle_speed
+from physics_data
+where ABS(particle_position)*10.0 > 500
+
+#Example query with both column and table name aliases
+SELECT  column AS better_name,....
+FROM a_long_widgets_table_name AS mywidgets INNER JOIN widget_sales
+ON mywidgets.id = widget_sales.widget_id
+
+
+# Excises:
+
+#List all movies and their combined sales in millions of dollars
+
+SELECT title, (domestic_sales + international_sales) / 1000000 AS gross_sales_millions
+FROM movies
+  JOIN boxoffice
+    ON movies.id = boxoffice.movie_id;
+
+
+#List all movies and their ratings in percent
+
+SELECT title, rating * 10 AS rating_percent
+FROM movies
+  JOIN boxoffice
+    ON movies.id = boxoffice.movie_id;
+
+#List all movies that were released on even number years
+
+SELECT title, year
+FROM movies
+WHERE year % 2 = 0;
+
+
+#Select query with aggregate functions over all rows
+
+select agg_func(column_or_expression) as aggregate_description,....
+from mytable
+where constraint_expression
+
+----------------------------------------------------------------------------
+#Common aggregate functions
+Function	Description
+COUNT(*), COUNT(column)	      A common function used to counts the number of rows in the group if no column name is
+                              specified. Otherwise, count the number of rows in the group with non-NULL values
+                              in the specified column.
+MIN(column)	                  Finds the smallest numerical value in the specified column for all rows in the group.
+MAX(column)	                  Finds the largest numerical value in the specified column for all rows in the group.
+AVG(column)	                  Finds the average numerical value in the specified column for all rows in the group.
+SUM(column)	                  Finds the sum of all numerical values in the specified column for the rows in the group.
+
+
+#Grouped aggregate functions
+
+Select query with aggregate functions over groups
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression
+GROUP BY column
+
+#Excises:
+
+#Find the longest time that an employee has been at the studio
+
+SELECT max(Years_employed) as max_years_emplyed FROM employees
+
+#For each role, find the average number of years employed by employees in that role
+
+select role,avg(Years_employed) from Employees
+group by Role
+
+#Find the total number of employee years worked in each building
+
+select sum(Years_employed) as total_years_employed,building from Employees
+group by building
+
+
+# HAVING clause is used specifically with the GROUP BY clause to allow us to filter grouped rows from the result set.
+
+SELECT group_by_column, AGG_FUNC(column_expression) AS aggregate_result_alias, …
+FROM mytable
+WHERE condition
+GROUP BY column
+HAVING group_condition
+
+
+# Excises:
+#Find the number of Artists in the studio (without a HAVING clause)
+
+select count(*) as number_artists from Employees
+where Role = "Artist"
+
+#Find the number of Employees of each role in the studio
+SELECT role,count(*)as number_role from Employees
+group by role
+
+
+#Find the total number of years employed by all Engineers
+
+SELECT role, SUM(years_employed)
+FROM employees
+GROUP BY role
+HAVING role = "Engineer"
+
+---------------------------------------------------------------------------------
+
+#Order of execution of a Query
+
+#Complete SELECT query
+
+FROM mytable
+    JOIN another_table
+      ON mytable.column = another_table.column
+    WHERE constraint_expression
+    GROUP BY column
+    HAVING constraint_expression
+    ORDER BY column ASC/DESC
+    LIMIT count OFFSET COUNT
+
+# order: FROM and JOIN--WHERE-GROUP BY-HAVING-SELECT-DISTINCT-ORDER BY-LIMIT / OFFSET
+
+#Find the number of movies each director has directed
+SELECT director,count(*) FROM movies
+group by director
+
+#Find the total domestic and international sales that can be attributed to each director
+
+SELECT director, sum (Domestic_sales + International_sales) as total_sales
+FROM movies join Boxoffice on Id = Movie_id
+group by director
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
