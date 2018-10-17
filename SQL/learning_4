@@ -1,0 +1,80 @@
+####Inserting rows
+
+#Insert statement with values for all columns
+
+insert into mytable
+values (value_or_expr, another_value_or_expr, …),
+       (value_or_expr_2, another_value_or_expr_2, …)
+
+#Insert statement with specific columns
+
+INSERT INTO mytable
+(column, another_column, …)
+VALUES (value_or_expr, another_value_or_expr, …),
+      (value_or_expr_2, another_value_or_expr_2, …)
+
+# Exercises:
+
+#Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
+
+insert into Movies values ("Toy Story 4","John Lasseter")
+
+# Toy Story 4 has been released to critical acclaim! It had a rating of 8.7,
+# and made 340 million domestically and 270 million internationally. Add the record to the  BoxOffice table
+
+insert into Boxoffice (Rating,Domestic_sales,International_sales)
+values (8.7,340000000,270000000)
+
+-------------------------------------------------------------------------------------------------------------------
+#Updating rows
+
+# Update statement with values
+
+update mytable
+set column = value_or_expr, other_column = another_value_or_expr
+where condition
+
+
+#always write the constraint first and test it in a SELECT query to make sure you are updating the right rows
+
+
+#Exercise:
+
+#The director for A Bug's Life is incorrect, it was actually directed by John Lasseter
+update Moviea
+set director = "John Lasseter"
+where title = "A Bug's Life"
+
+#The year that Toy Story 2 was released is incorrect, it was actually released in 1999
+update Movies
+set year = 1999
+where title = "Toy Story 2"
+
+#Both the title and directory for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich
+#update Movies
+set title = "Toy Story 3",director = "Lee Unkrich"
+where id = 11
+
+--------------------------------------------------------------------------
+
+# Deleting rows
+
+#Delete statement with condition
+
+DELETE FROM mytable
+WHERE condition
+
+#This database is getting too big, lets remove all movies that were released before 2005
+delete from Movies
+where year < 2005
+
+#Andrew Stanton has also left the studio, so please remove all movies directed by him.
+
+delete from Movies
+where director = "Andrew Stanton"
+
+
+
+
+
+
