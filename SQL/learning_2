@@ -54,7 +54,7 @@ ORDER BY column, … ASC/DESC
 LIMIT num_limit OFFSET num_offset;
 
 
-Excises:
+Exercises:
 
 #Find the list of all buildings that have employees
 
@@ -85,7 +85,7 @@ and/or another_condition
 and/or
 
 
-Excises:
+Exercises:
 
 #Find the name and role of all employees who have not been assigned to a building
 
@@ -101,6 +101,10 @@ FROM buildings
     ON building_name = building
 WHERE role IS NULL;
 
+#The MySQL IFNULL() function lets you return an alternative value if an expression is NULL:
+
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+FROM Products
 
 
 
