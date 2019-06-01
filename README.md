@@ -1,3 +1,1 @@
-# Rita
-Just another repository
-Hello, world
+# SQL learning notes
