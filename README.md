@@ -1,2 +1,5 @@
 # sql learning notes
-# sql zoo and leetcode practice
+
+# sql zoo 
+
+# leetcode practice
