@@ -1,0 +1,33 @@
+# Query the names of all American cities in CITY with populations larger than 120000. The CountryCode for America is USA.
+
+The CITY table is described as follows: CITY.jpg
+
+solution:
+select name from city where population >120000 and countrycode = 'USA';
+
+
+
+# Query a list of CITY names from STATION with even ID numbers only. You may print the results in any order, but must exclude duplicates from your answer.
+
+Input Format
+
+The STATION table is described as follows:
+
+Station.jpg
+
+where LAT_N is the northern latitude and LONG_W is the western longitude
+
+SOLUTION
+SELECT DISTINCT CITY FROM STATION WHERE (ID % 2) = 0;
+
+
+
+# Let  be the number of CITY entries in STATION, and let  be the number of distinct CITY names in STATION; query the value of  from STATION. In other words, find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.
+
+Input Format
+
+The STATION table is described as follows:
+
+SOLUTION:
+SELECT COUNT(CITY) - COUNT(DISTINCT CITY) AS N  FROM STATION
+
