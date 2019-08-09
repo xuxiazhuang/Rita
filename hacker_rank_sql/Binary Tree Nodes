@@ -17,3 +17,11 @@ SELECT N, IF(P IS NULL,'Root',IF((SELECT COUNT(*) FROM BST WHERE P=B.N)>0,'Inner
 defination and usage of if:
 The IF() function returns a value if a condition is TRUE, or another value if a condition is FALSE.
 IF(condition, value_if_true, value_if_false)
+
+
+solution2:
+
+select N, case when P is NULL then 'Root' 
+               when N in (select P from BST) then 'Inner' 
+               else 'Leaf' end as Node 
+from BST order by N;
