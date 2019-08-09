@@ -1,0 +1,12 @@
+Query the average population for all cities in CITY, rounded down to the nearest integer.
+
+solution:
+select round(avg(population)) from city;
+
+Syntax
+ROUND(number, decimals, operation)
+
+Parameter	Description
+number	Required. The number to be rounded
+decimals	Required. The number of decimal places to round number to
+operation	Optional. If 0, it rounds the result to the number of decimal. If another value than 0, it truncates the result to the number of decimals. Default value is 0
