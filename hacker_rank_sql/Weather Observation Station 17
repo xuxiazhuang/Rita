@@ -1,0 +1,9 @@
+Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION is greater than . Round your answer to  decimal places.
+
+SOLUTION1:
+select round(LONG_W,4) from station where LAT_N > 38.778 ORDER BY LAT_N ASC
+LIMIT 1;
+
+SOLUTION2:
+SELECT ROUND(LONG_W,4) FROM STATION WHERE LAT_N = (SELECT MIN(LAT_N) FROM STATION WHERE LAT_N > 38.7780);
+
