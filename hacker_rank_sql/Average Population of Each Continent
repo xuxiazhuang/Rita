@@ -1,0 +1,8 @@
+Given the CITY and COUNTRY tables, query the names of all the continents (COUNTRY.Continent) and their respective average city 
+populations (CITY.Population) rounded down to the nearest integer.
+
+SOLUTION:
+SELECT CONTINENT, ROUND(AVG(CITY.POPULATION)-0.5) FROM COUNTRY JOIN CITY ON CITY.CountryCode = COUNTRY.Code GROUP BY CONTINENT;
+
+
+Because we need to round down to the nearest integer,so I do AVG(CITY.POPULATION)-0.5.
