@@ -6,3 +6,9 @@
 * lesson5 alter/ drop
 * lesson6 union
 * lesson7 aiases 
+
+# hacker rank sql 
+learn and practice sql from hacker rank 
+find all the solutions here 
+https://github.com/xuxiazhuang/sql/tree/master/hacker_rank_sql
+
