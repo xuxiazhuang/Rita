@@ -9,6 +9,6 @@
 
 # hacker rank sql 
 learn and practice sql from hacker rank 
-find all the solutions here 
+ and find all the solutions here 
 https://github.com/xuxiazhuang/sql/tree/master/hacker_rank_sql
 
