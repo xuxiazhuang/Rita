@@ -1,0 +1,19 @@
+P(R) represents a pattern drawn by Julia in R rows. The following pattern represents P(5):
+
+* * * * * 
+* * * * 
+* * * 
+* * 
+*
+Write a query to print the pattern P(20).
+
+
+SELECT REPEAT('* ', @NUMBER := @NUMBER - 1) FROM information_schema.tables, (SELECT @NUMBER:=21)T  LIMIT 20;
+
+
+information_schema.tables:
+Overview
+The INFORMATION_SCHEMA.TABLES view allows you to get information about all tables and views within a database. By default it will show you this information for every single table and view that is in the database.
+
+Explanation
+This view can be called from any of the databases in an instance of SQL Server and will return the results for the data within that particular database.
