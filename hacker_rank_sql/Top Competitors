@@ -1,0 +1,28 @@
+Julia just finished conducting a coding contest, and she needs your help assembling the leaderboard! Write a query to print the respective hacker_id and name of hackers who achieved full 
+scores for more than one challenge. Order your output in descending order by the total number of challenges in which the hacker earned a full score. If more than one hacker received full scores
+in same number of challenges, then sort them by ascending hacker_id.
+
+solution:
+
+SELECT s.hacker_id, h.name 
+from Submissions s 
+join Challenges c 
+on s.challenge_id = c.challenge_id
+join Difficulty d 
+on c.difficulty_level = d.difficulty_level 
+join Hackers h 
+on h.hacker_id = s.hacker_id 
+where s.score = d.score and c.difficulty_level = d.difficulty_level
+GROUP BY s.hacker_id,h.name 
+HAVING COUNT(s.hacker_id) > 1
+order by count(s.hacker_id) desc,hacker_id asc;
+
+HAVING:
+The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.
+The major difference between WHERE and HAVING is that WHERE clause specifies the conditions for selecting the tuples (rows) from the relations, 
+including join conditions if needed. 
+On the other hand, HAVING clause specifies a condition on the groups being selected rather than on individual tuples.
+
+Key point, which is also the main difference between WHERE and HAVING clause in SQL is that, condition specified in WHERE clause is used while 
+fetching data (rows) from table, and data which doesn't pass the condition will not be fetched into result set, on the other hand HAVING clause is 
+later used to filter summarized data or grouped data.
