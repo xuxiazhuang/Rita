@@ -1,0 +1,14 @@
+DATEADD()
+
+The DATEADD() function adds a time/date interval to a date and then returns the date.
+
+E.G.
+SELECT DATEADD(month, 2, '2017/08/25') AS DateAdd;
+2017-10-25 00:00:00.000
+
+SELECT LastName, BirthDate, DATEADD(year, 18, BirthDate) AS DateAdd FROM Employees;
+LastName	BirthDate	DateAdd
+Davolio	1968-12-08	1986-12-08
+Fuller	1952-02-19	1970-02-19
+Leverling	1963-08-30	1981-08-30
+Peacock	1958-09-19	1976-09-19
