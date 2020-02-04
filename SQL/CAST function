@@ -1,0 +1,19 @@
+Cast function usage
+
+The cast function converts a value (of any type) into a specified datatype.
+
+CAST(expression AS datatype(length))
+
+e.g.SELECT CAST('2017-08-25' AS datetime);
+2017-08-25 00:00:00.000
+
+
+datatype	Required. 
+Value	Description
+DATE	Converts value to DATE. Format: "YYYY-MM-DD"
+DATETIME	Converts value to DATETIME. Format: "YYYY-MM-DD HH:MM:SS"
+TIME	Converts value to TIME. Format: "HH:MM:SS"
+CHAR	Converts value to CHAR (a fixed length string)
+SIGNED	Converts value to SIGNED (a signed 64-bit integer)
+UNSIGNED	Converts value to UNSIGNED (an unsigned 64-bit integer)
+BINARY	Converts value to BINARY (a binary string)
