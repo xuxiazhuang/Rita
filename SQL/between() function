@@ -1,0 +1,41 @@
+Between
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+
+The BETWEEN operator is inclusive: begin and end values are included. 
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+
+e.g.
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20;
+
+SELECT * FROM Products
+WHERE Price NOT BETWEEN 10 AND 20;
+
+SELECT * FROM Products
+WHERE ProductName BETWEEN 'Carnarvon Tigers' AND 'Genen Shouyu'
+ORDER BY ProductName;
+
+ProductID	ProductName	SupplierID	CategoryID	Unit	Price
+18	Carnarvon Tigers	7	8	16 kg pkg.	62.5
+1	Chais	1	1	10 boxes x 20 bags	18
+2	Chang	1	1	24 - 12 oz bottles	19
+39	Chartreuse verte	18	1	750 cc per bottle	18
+4	Chef Anton's Cajun Seasoning	2	2	48 - 6 oz jars	22
+5	Chef Anton's Gumbo Mix	2	2	36 boxes	21.35
+48	Chocolade	22	3	10 pkgs.	12.75
+38	Côte de Blaye	18	1	12 - 75 cl bottles	263.5
+58	Escargots de Bourgogne	27	8	24 pieces	13.25
+52	Filo Mix	24	5	16 - 2 kg boxes	7
+71	Fløtemysost	15	4	10 - 500 g pkgs.	21.5
+33	Geitost	15	4	500 g	2.5
+
+
+e.g.
+SELECT * FROM Orders
+WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+
+
