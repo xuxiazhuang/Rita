@@ -1,0 +1,23 @@
+The DATEPART() function returns a specified part of a date.
+This function returns the result as an integer value.
+
+interval	Required. The part to return. Can be one of the following values:
+year, yyyy, yy = Year
+quarter, qq, q = Quarter
+month, mm, m = month
+dayofyear, dy, y = Day of the year
+day, dd, d = Day of the month
+week, ww, wk = Week
+weekday, dw, w = Weekday
+hour, hh = hour
+minute, mi, n = Minute
+second, ss, s = Second
+millisecond, ms = Millisecond
+
+SELECT DATEPART(yy, '2017/08/25') AS DatePartInt;
+2017
+
+SELECT DATEPART(hour, '2017/08/25 08:36') AS DatePartInt;
+8
+
+***where datepart(year, order_day) = 2019
